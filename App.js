@@ -36,7 +36,7 @@ export default function App() {
 
           onTimerEnd={(subject) => {
             setHistory([...history, subject])
-          }
+            }
           }
 
           clearSubject={() => setCurrentSubject(null)}

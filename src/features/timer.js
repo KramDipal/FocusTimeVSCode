@@ -18,7 +18,6 @@ const PATTERN = [
   1 * ONE_SECOND_IN_MS,
 ];
 
-// export const Timer = ({ focusSubject, clearSubject }) => {
   export const Timer = ({ focusSubject, clearSubject, onTimerEnd }) => {
   useKeepAwake();
   
@@ -37,6 +36,8 @@ const PATTERN = [
   return (
     <View style={styles.container}>
       <View style={styles.countdown}>
+
+
         <Countdown
           minutes={minutes}
           isPaused={!isStarted}
@@ -44,11 +45,14 @@ const PATTERN = [
           //onEnd={onEnd}
           onEnd={handleEnd}
         />
+
         <View style={{ paddingTop: spacing.xxl }}>
           <Text style={styles.title}>Focusing on:</Text>
           <Text style={styles.task}>{focusSubject}</Text>
         </View>
+
       </View>
+      
       <View style={{ paddingTop: spacing.sm }}>
         <ProgressBar
           progress={progress}
@@ -56,9 +60,13 @@ const PATTERN = [
           style={{ height: spacing.sm }}
         />
       </View>
+
       <View style={styles.timingWrapper}>
+        // Pass the setMinutes function from the Timing component
         <Timing onChangeTime={setMinutes} />
       </View>
+
+      // Add a button to start or pause the timer
       <View style={styles.buttonWrapper}>
         {!isStarted ? (
           <RoundedButton title="start" onPress={() => setIsStarted(true)} />
@@ -66,9 +74,12 @@ const PATTERN = [
           <RoundedButton title="pause" onPress={() => setIsStarted(false)} />
         )}
       </View>
-      <View style={styles.clearSubjectWrapper}>
-        <RoundedButton size={50} title="-" onPress={clearSubject} />
+        
+        // Add a button to clear the subject
+      <View style={styles.clearSubjectWrapper}> 
+        <RoundedButton size={50} title="clear" onPress={clearSubject} />
       </View>
+
     </View>
   );
 };

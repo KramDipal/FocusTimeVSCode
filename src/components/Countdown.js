@@ -8,6 +8,8 @@ const minutesToMillis = (min) => Math.round(min * 1000 * 60); // Ensure integer 
 const formatTime = (time) => (time < 10 ? `0${time}` : time);
 
 export const Countdown = ({ minutes = 0.1, isPaused, onProgress, onEnd }) => {
+
+  console.log(`Countdown started: ${minutes}`);
   const interval = useRef(null);
 
   // Initialize millis with rounded value to ensure it's an integer
